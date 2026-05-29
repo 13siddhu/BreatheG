@@ -1,0 +1,43 @@
+{
+  "Itinerary": {
+    "TripName": "Q4 Planning Offsite",
+    "Bookings": [
+      {
+        "Segments": {
+          "Air": [
+            {
+              "Vendor": "Delta Airlines",
+              "FlightNumber": "DL123",
+              "Departure": {
+                "City": "SFO",
+                "Date": "2023-10-05T08:00:00"
+              },
+              "Arrival": {
+                "City": "JFK",
+                "Date": "2023-10-05T16:30:00"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "Segments": {
+          "Air": [
+            {
+              "Vendor": "United Airlines",
+              "FlightNumber": "UA456",
+              "Departure": {
+                "City": "JFK",
+                "Date": "2023-10-10T09:00:00"
+              },
+              "Arrival": {
+                "City": "SFO",
+                "Date": "2023-10-10T12:00:00"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
