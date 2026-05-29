@@ -16,9 +16,14 @@ export default function ReviewDashboard() {
   const [records, setRecords] = useState<NormalizedRecord[]>([]);
   const [loading, setLoading] = useState(true);
 
+  const getBaseUrl = () => {
+    const url = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+    return url.replace(/\/$/, ''); // Remove trailing slash if present
+  };
+
   const fetchRecords = async () => {
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/records/`);
+      const res = await fetch(`${getBaseUrl()}/api/records/`);
       if (res.ok) {
         const data = await res.json();
         setRecords(data);
@@ -36,7 +41,7 @@ export default function ReviewDashboard() {
 
   const updateStatus = async (id: string, status: RecordStatus) => {
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/records/${id}/`, {
+      const res = await fetch(`${getBaseUrl()}/api/records/${id}/`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status })

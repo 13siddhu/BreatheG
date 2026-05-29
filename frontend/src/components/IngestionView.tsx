@@ -12,6 +12,11 @@ export default function IngestionView() {
     setTimeout(() => setMessage({ text: '', type: '' }), 5000);
   };
 
+  const getBaseUrl = () => {
+    const url = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+    return url.replace(/\/$/, ''); // Remove trailing slash if present
+  };
+
   const handleUpload = async (file: File | null, endpoint: string, sourceName: string) => {
     if (!file) return;
     setLoading(true);
@@ -19,7 +24,7 @@ export default function IngestionView() {
     formData.append('file', file);
     
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/ingest/${endpoint}/`, {
+      const res = await fetch(`${getBaseUrl()}/api/ingest/${endpoint}/`, {
         method: 'POST',
         body: formData
       });
@@ -42,7 +47,7 @@ export default function IngestionView() {
     setLoading(true);
     try {
       JSON.parse(concurJson);
-      const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/ingest/concur/`, { 
+      const res = await fetch(`${getBaseUrl()}/api/ingest/concur/`, { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
