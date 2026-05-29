@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 export default function IngestionView() {
   const [sapFile, setSapFile] = useState<File | null>(null);
